@@ -4,6 +4,8 @@
 
 #include "Utils.h"
 
+#include "RepairItems.h"
+
 #include "Commands.h"
 
 #include "Reload.h"
@@ -18,7 +20,7 @@ void OnServerReady()
 	Log::GetLog()->info("PluginTemplate Initialized");
 
 	ReadConfig();
-	//AddOrRemoveCommands();
+	AddOrRemoveCommands();
 	AddReloadCommands();
 }
 
@@ -43,4 +45,7 @@ extern "C" __declspec(dllexport) void Plugin_Init()
 extern "C" __declspec(dllexport) void Plugin_Unload()
 {
 	AsaApi::GetHooks().DisableHook("AShooterGameMode.BeginPlay()", Hook_AShooterGameMode_BeginPlay);
+
+	AddOrRemoveCommands(false);
+	AddReloadCommands(false);
 }

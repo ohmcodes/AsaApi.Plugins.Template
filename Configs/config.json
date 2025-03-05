@@ -1,5 +1,9 @@
 {
   "General": {
-    "Debug": true
+    "Debug": true,
+    "IgnoreInvRepairRequirements":  true
+  },
+  "Commands": {
+    "RepairItemCMD": "/repairitems"
   }
 }

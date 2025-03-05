@@ -53,5 +53,8 @@
     <ClInclude Include="Source\Commands.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\RepairItems.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
