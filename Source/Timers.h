@@ -4,6 +4,9 @@ void TimerCallback()
 	if (PluginTemplate::counter == 20)
 	{
 		Log::GetLog()->info("Server is up!");
+
+		const FString msg = FString("Welcome to the server");
+		AsaApi::GetApiUtils().GetCheatManager()->Broadcast(&msg);
 	}
 
 	if (PluginTemplate::counter == 50)
