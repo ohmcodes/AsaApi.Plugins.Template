@@ -16,6 +16,9 @@
     <Filter Include="Configs">
       <UniqueIdentifier>{c06959b0-30d5-4016-be1d-586522f88e2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Public">
+      <UniqueIdentifier>{0c1818de-a0b9-4baf-bb00-b17ee771b707}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="vcpkg.json" />
@@ -39,6 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Public\PluginTemplate.h">
+      <Filter>Header Files\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Reload.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Commands.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

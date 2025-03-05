@@ -29,7 +29,10 @@
     <ClCompile Include="Source\PluginTemplate.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Commands.h" />
     <ClInclude Include="Source\Public\PluginTemplate.h" />
+    <ClInclude Include="Source\Reload.h" />
+    <ClInclude Include="Source\Utils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

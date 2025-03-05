@@ -2,7 +2,7 @@
 
 #include "json.hpp"
 
-namespace PluginsTemplate
+namespace PluginTemplate
 {
 	inline nlohmann::json config;
 	inline bool isDebug{ false };

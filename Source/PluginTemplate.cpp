@@ -2,12 +2,24 @@
 
 #include "PluginTemplate.h"
 
+#include "Utils.h"
+
+#include "Commands.h"
+
+#include "Reload.h"
+
 
 #pragma comment(lib, "AsaApi.lib")
+
+
 
 void OnServerReady()
 {
 	Log::GetLog()->info("PluginTemplate Initialized");
+
+	ReadConfig();
+	//AddOrRemoveCommands();
+	AddReloadCommands();
 }
 
 DECLARE_HOOK(AShooterGameMode_BeginPlay, void, AShooterGameMode*);
