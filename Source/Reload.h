@@ -42,7 +42,7 @@ void ReloadConfigRcon(RCONClientConnection* rcon_connection, RCONPacket* rcon_pa
 	reply = "Config Reloaded.";
 	rcon_connection->SendMessageW(rcon_packet->Id, 0, &reply);
 }
-
+ 
 void AddReloadCommands(bool addCmd = true)
 {
 	if (addCmd)
