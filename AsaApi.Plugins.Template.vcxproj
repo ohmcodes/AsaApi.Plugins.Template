@@ -25,10 +25,10 @@
     <ClCompile Include="Source\AsaApi.Plugins.Template.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Config\config-commented.json" />
-    <None Include="Config\config-dev.json" />
-    <None Include="Config\config.json" />
-    <None Include="Config\PluginInfo.json" />
+    <None Include="Configs\config-commented.json" />
+    <None Include="Configs\config-dev.json" />
+    <None Include="Configs\config.json" />
+    <None Include="Configs\PluginInfo.json" />
     <None Include="vcpkg.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

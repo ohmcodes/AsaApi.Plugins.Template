@@ -28,18 +28,18 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Config\config.json">
-      <Filter>Configs</Filter>
-    </None>
-    <None Include="Config\config-commented.json">
-      <Filter>Configs</Filter>
-    </None>
-    <None Include="Config\config-dev.json">
-      <Filter>Configs</Filter>
-    </None>
-    <None Include="Config\PluginInfo.json">
-      <Filter>Configs</Filter>
-    </None>
     <None Include="vcpkg.json" />
+    <None Include="Configs\config.json">
+      <Filter>Configs</Filter>
+    </None>
+    <None Include="Configs\config-commented.json">
+      <Filter>Configs</Filter>
+    </None>
+    <None Include="Configs\config-dev.json">
+      <Filter>Configs</Filter>
+    </None>
+    <None Include="Configs\PluginInfo.json">
+      <Filter>Configs</Filter>
+    </None>
   </ItemGroup>
 </Project>
