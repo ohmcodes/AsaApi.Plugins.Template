@@ -1,0 +1,2 @@
+C:/Users/ohmco/Desktop/AsaApi.Plugins.Template/vcpkg_installed/x64-windows-static-md/vcpkg/blds/detect_compiler/x64-windows-static-md-rel/CMakeFiles/edit_cache.dir
+C:/Users/ohmco/Desktop/AsaApi.Plugins.Template/vcpkg_installed/x64-windows-static-md/vcpkg/blds/detect_compiler/x64-windows-static-md-rel/CMakeFiles/rebuild_cache.dir

@@ -40,5 +40,6 @@
     <None Include="Config\PluginInfo.json">
       <Filter>Configs</Filter>
     </None>
+    <None Include="vcpkg.json" />
   </ItemGroup>
 </Project>
