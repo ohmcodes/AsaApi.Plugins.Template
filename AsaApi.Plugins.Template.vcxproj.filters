@@ -56,5 +56,11 @@
     <ClInclude Include="Source\RepairItems.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Hooks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Timers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
