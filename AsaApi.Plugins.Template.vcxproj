@@ -176,7 +176,7 @@ copy /y "$(TargetPath)" "D:\WGSM\servers\1\serverfiles\ShooterGame\Binaries\Win6
 copy /y "$(SolutionDir)Configs\config-dev.json" "D:\WGSM\servers\1\serverfiles\ShooterGame\Binaries\Win64\ArkApi\Plugins\$(ProjectName)\config.json"
 copy /y "$(SolutionDir)Configs\PluginInfo.json" "D:\WGSM\servers\1\serverfiles\ShooterGame\Binaries\Win64\ArkApi\Plugins\$(ProjectName)\PluginInfo.json
 git add -A
-git commit -m "Auto push after build __TIMESTAMP__"
+git commit -m "Auto push after build"
 git push</Command>
     </PostBuildEvent>
     <PreBuildEvent>
