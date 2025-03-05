@@ -13,21 +13,32 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Configs">
+      <UniqueIdentifier>{c06959b0-30d5-4016-be1d-586522f88e2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
+    <ClInclude Include="Source\Public\AsaApi.Plugins.Template.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp">
+    <ClCompile Include="Source\AsaApi.Plugins.Template.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\config.json">
+      <Filter>Configs</Filter>
+    </None>
+    <None Include="Config\config-commented.json">
+      <Filter>Configs</Filter>
+    </None>
+    <None Include="Config\config-dev.json">
+      <Filter>Configs</Filter>
+    </None>
+    <None Include="Config\PluginInfo.json">
+      <Filter>Configs</Filter>
+    </None>
   </ItemGroup>
 </Project>
