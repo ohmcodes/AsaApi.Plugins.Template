@@ -19,17 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Public\AsaApi.Plugins.Template.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Source\AsaApi.Plugins.Template.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Configs\config-commented.json" />
     <None Include="Configs\config-dev.json" />
     <None Include="Configs\config.json" />
     <None Include="Configs\PluginInfo.json" />
     <None Include="vcpkg.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\PluginTemplate.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Public\PluginTemplate.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -37,6 +37,7 @@
     <ProjectGuid>{f7095f8f-7bbd-40a5-b61d-b442c92a88b2}</ProjectGuid>
     <RootNamespace>AsaApiPluginsTemplate</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>PluginTemplate</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -1,5 +1,5 @@
 {
-  "FullName": "AsaApi.Plugins.Template",
+  "FullName": "PluginTemplate",
   "Description": "A Super simple Plugin that actually works",
   "Version": 1.0,
   "MinApiVersion": 1.18

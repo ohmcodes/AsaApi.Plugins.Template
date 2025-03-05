@@ -1,13 +1,13 @@
 #include "API/ARK/Ark.h"
 
-#include "AsaApi.Plugins.Template.h"
+#include "PluginTemplate.h"
 
 
 #pragma comment(lib, "AsaApi.lib")
 
 void OnServerReady()
 {
-	Log::GetLog()->info("AsaApi.Plugin.Template Initialized");
+	Log::GetLog()->info("PluginTemplate Initialized");
 }
 
 DECLARE_HOOK(AShooterGameMode_BeginPlay, void, AShooterGameMode*);
