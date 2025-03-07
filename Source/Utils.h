@@ -35,7 +35,7 @@ void LoadDatabase()
 	if (PluginTemplate::config["PluginDBSettings"].value("UseMySQL", true))
 	{
 		tableDefinition = {
-			{"Id", "INT NOT NULL AUTO_INCREAMENT"},
+			{"Id", "INT NOT NULL AUTO_INCREMENT"},
 			{"EosId", "VARCHAR(50) NOT NULL"},
 			{"PlayerId", "VARCHAR(50) NOT NULL"},
 			{"PlayerName", "VARCHAR(50) NOT NULL"},
