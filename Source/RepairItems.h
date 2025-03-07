@@ -45,7 +45,8 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 		affectedItemsCounter += 1;
 	}
 
-
+	
+	AddPlayer(pc->GetEOSId(), pc->GetLinkedPlayerID(), pc->GetCharacterName());
 
 	// points deductions
 

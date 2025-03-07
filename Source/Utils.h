@@ -1,6 +1,30 @@
 
 #include <fstream>
 
+bool AddPlayer(FString eosID, int playerID, FString playerName)
+{
+	std::vector<std::pair<std::string, std::string>> data = {
+		{"EosId", eosID.ToString()},
+		{"PlayerId", std::to_string(playerID)},
+		{"PlayerName", playerName.ToString()}
+	};
+
+	if (PluginTemplate::pluginTemplateDB->create(PluginTemplate::config["PluginDBSettings"]["TableName"].get<std::string>(), data))
+	{
+		if (PluginTemplate::config["General"]["Debug"])
+			Log::GetLog()->info("{}: added to database.", playerName.ToString());
+
+		return true;
+	}
+	else
+	{
+		if (PluginTemplate::config["General"]["Debug"])
+			Log::GetLog()->info("adding {} to DB failed. {}", playerName.ToString(), __FUNCTION__);
+	}
+
+	return false;
+}
+
 void ReadConfig()
 {
 	try
