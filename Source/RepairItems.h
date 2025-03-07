@@ -45,8 +45,18 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 		affectedItemsCounter += 1;
 	}
 
+	if (ReadPlayer(pc->GetEOSId()))
+	{
+		UpdatePlayer(pc->GetEOSId(), pc->GetCharacterName());
+	}
+	else
+	{
+		AddPlayer(pc->GetEOSId(), pc->GetLinkedPlayerID(), pc->GetCharacterName());
+	}
 	
-	AddPlayer(pc->GetEOSId(), pc->GetLinkedPlayerID(), pc->GetCharacterName());
+	
+
+
 
 	// points deductions
 
@@ -55,4 +65,15 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 	{
 		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Green, 1.3f, 15.0f, nullptr, "All items has been repaired.");
 	}
+}
+
+
+void DeletePlayerCallback(AShooterPlayerController* pc, FString* param, int, int)
+{
+	Log::GetLog()->warn("Function: {}", __FUNCTION__);
+
+
+	//pc->GetEOSId(), pc->GetLinkedPlayerID(), pc->GetCharacterName()
+
+	DeletePlayer(pc->GetEOSId());
 }

@@ -9,20 +9,43 @@ bool AddPlayer(FString eosID, int playerID, FString playerName)
 		{"PlayerName", playerName.ToString()}
 	};
 
-	if (PluginTemplate::pluginTemplateDB->create(PluginTemplate::config["PluginDBSettings"]["TableName"].get<std::string>(), data))
-	{
-		if (PluginTemplate::config["General"]["Debug"])
-			Log::GetLog()->info("{}: added to database.", playerName.ToString());
+	return PluginTemplate::pluginTemplateDB->create(PluginTemplate::config["PluginDBSettings"]["TableName"].get<std::string>(), data);
+}
 
-		return true;
-	}
-	else
-	{
-		if (PluginTemplate::config["General"]["Debug"])
-			Log::GetLog()->info("adding {} to DB failed. {}", playerName.ToString(), __FUNCTION__);
-	}
+bool ReadPlayer(FString eosID)
+{
+	std::string escaped_id = PluginTemplate::pluginTemplateDB->escapeString(eosID.ToString());
 
-	return false;
+	std::string query = fmt::format("SELECT * FROM {} WHERE EosId='{}'", PluginTemplate::config["PluginDBSettings"]["TableName"].get<std::string>(), escaped_id);
+
+	std::vector<std::map<std::string, std::string>> results;
+	PluginTemplate::pluginTemplateDB->read(query, results);
+
+	return results.size() <= 0 ? false : true;
+}
+
+bool UpdatePlayer(FString eosID, FString playerName)
+{
+	std::string unique_id = "EosId";
+
+	std::string escaped_id = PluginTemplate::pluginTemplateDB->escapeString(eosID.ToString());
+
+	std::vector<std::pair<std::string, std::string>> data = {
+		{"PlayerName", playerName.ToString() + "123"}
+	};
+
+	std::string condition = fmt::format("{}='{}'", unique_id, escaped_id);
+
+	return PluginTemplate::pluginTemplateDB->update(PluginTemplate::config["PluginDBSettings"]["TableName"].get<std::string>(), data, condition);
+}
+
+bool DeletePlayer(FString eosID)
+{
+	std::string escaped_id = PluginTemplate::pluginTemplateDB->escapeString(eosID.ToString());
+
+	std::string condition = fmt::format("EosId='{}'", escaped_id);
+
+	return PluginTemplate::pluginTemplateDB->deleteRow(PluginTemplate::config["PluginDBSettings"]["TableName"].get<std::string>(), condition);
 }
 
 void ReadConfig()
