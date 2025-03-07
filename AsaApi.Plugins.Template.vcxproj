@@ -26,11 +26,17 @@
     <None Include="vcpkg.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Database\MySQLConnector.cpp" />
+    <ClCompile Include="Source\Database\SQLiteConnector.cpp" />
     <ClCompile Include="Source\PluginTemplate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Commands.h" />
     <ClInclude Include="Source\Hooks.h" />
+    <ClInclude Include="Source\Public\Database\DatabaseFactory.h" />
+    <ClInclude Include="Source\Public\Database\IDatabaseConnector.h" />
+    <ClInclude Include="Source\Public\Database\MySQLConnector.h" />
+    <ClInclude Include="Source\Public\Database\SQLiteConnector.h" />
     <ClInclude Include="Source\Public\PluginTemplate.h" />
     <ClInclude Include="Source\Reload.h" />
     <ClInclude Include="Source\RepairItems.h" />
@@ -172,7 +178,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>$(SolutionDir)..\AsaApi\out_lib\AsaApi.lib;Ws2_32.lib;crypt32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)..\AsaApi\out_lib\AsaApi.lib;$(SolutionDir)Libs\mysqlclient.lib;Ws2_32.lib;crypt32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(SolutionDir)Output\$(ProjectName)\"

@@ -19,6 +19,12 @@
     <Filter Include="Header Files\Public">
       <UniqueIdentifier>{0c1818de-a0b9-4baf-bb00-b17ee771b707}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Database">
+      <UniqueIdentifier>{834d0f62-de43-403b-a7f2-563761ae6dc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Public\Database">
+      <UniqueIdentifier>{6794eca5-dfaf-409e-8ccb-3c6c3fa5d0f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="vcpkg.json" />
@@ -38,6 +44,12 @@
   <ItemGroup>
     <ClCompile Include="Source\PluginTemplate.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Database\MySQLConnector.cpp">
+      <Filter>Source Files\Database</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Database\SQLiteConnector.cpp">
+      <Filter>Source Files\Database</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +73,18 @@
     </ClInclude>
     <ClInclude Include="Source\Timers.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Public\Database\DatabaseFactory.h">
+      <Filter>Header Files\Public\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Public\Database\IDatabaseConnector.h">
+      <Filter>Header Files\Public\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Public\Database\MySQLConnector.h">
+      <Filter>Header Files\Public\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Public\Database\SQLiteConnector.h">
+      <Filter>Header Files\Public\Database</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

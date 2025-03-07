@@ -26,3 +26,30 @@ void ReadConfig()
 		throw;
 	}
 }
+
+void LoadDatabase()
+{
+	PluginTemplate::pluginTemplateDB = DatabaseFactory::createConnector(PluginTemplate::config["PluginDBSettings"]);
+
+	nlohmann::ordered_json tableDefinition = {};
+	if (PluginTemplate::config["PluginDBSettings"].value("UseMySQL", true))
+	{
+		tableDefinition = {
+			{"Id", "INT NOT NULL AUTO_INCREAMENT"},
+			{"EosId", "VARCHAR(50) NOT NULL"},
+			{"PlayerId", "VARCHAR(50) NOT NULL"},
+			{"PlayerName", "VARCHAR(50) NOT NULL"},
+			{"CreateAt", "DATETIME DEFAULT CURRENT_TIMESTAMP"},
+			{"PRIMARY", "KEY(Id)"},
+			{"UNIQUE", "INDEX EosId_UNIQUE (EosId ASC)"}
+		};
+	}
+	else
+	{
+		// SQLite
+	}
+
+	PluginTemplate::pluginTemplateDB->createTableIfNotExist(PluginTemplate::config["PluginDBSettings"].value("TableName", ""), tableDefinition);
+
+	
+}
