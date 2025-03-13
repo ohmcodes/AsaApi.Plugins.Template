@@ -30,7 +30,7 @@ public:
 		}
 		else
 		{
-			std::string default_path = AsaApi::Tools::GetCurrentDir() + "/ArkApi/Plugin/" + PROJECT_NAME + "/" + ".db";
+			std::string default_path = AsaApi::Tools::GetCurrentDir() + "/ArkApi/Plugins/" + PROJECT_NAME + "/" + ".db";
 			std::string sqlitePath = config.value("SQLiteDatabasePath","");
 			std::string db_path = (sqlitePath == "") ? default_path : sqlitePath;
 
