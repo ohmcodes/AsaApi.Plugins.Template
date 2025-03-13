@@ -76,6 +76,7 @@ void ReadConfig()
 
 void LoadDatabase()
 {
+	Log::GetLog()->warn("LoadDatabase");
 	PluginTemplate::pluginTemplateDB = DatabaseFactory::createConnector(PluginTemplate::config["PluginDBSettings"]);
 
 	nlohmann::ordered_json tableDefinition = {};
