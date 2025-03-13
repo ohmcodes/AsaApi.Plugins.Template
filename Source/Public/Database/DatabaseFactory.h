@@ -30,9 +30,8 @@ public:
 		}
 		else
 		{
-			nlohmann::json sqliteConfig = config.value("PluginDBSettings", {});
 			std::string default_path = AsaApi::Tools::GetCurrentDir() + "/ArkApi/Plugin/" + PROJECT_NAME + "/" + ".db";
-			std::string sqlitePath = sqliteConfig["SQLiteDatabasePath"].get<std::string>();
+			std::string sqlitePath = config.value("SQLiteDatabasePath","");
 			std::string db_path = (sqlitePath == "") ? default_path : sqlitePath;
 
 			return std::make_unique<SQLiteConnector>(db_path);
