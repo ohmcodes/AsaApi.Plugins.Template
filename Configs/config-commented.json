@@ -1,5 +1,22 @@
 {
   "General": {
-    "Debug": true
+    "Debug": true,
+    "IgnoreInvRepairRequirements": true
+  },
+  "Commands": {
+    "RepairItemCMD": "/repairitems",
+    "DeletePlayerCMD": "/deleteplayer"
+  },
+  "PluginDBSettings": {
+    "UseMySQL": false,
+    "Host": "",
+    "User": "",
+    "Password": "",
+    "Database": "",
+    "TableName": "PluginTemplate",
+    "Port": 3306,
+    "MysqlSSLMode": -1,
+    "MysqlTLSVersion": "",
+    "SQLiteDatabasePath": ""
   }
 }
