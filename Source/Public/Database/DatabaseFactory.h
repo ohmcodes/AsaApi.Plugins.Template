@@ -16,8 +16,6 @@ public:
 		int sslMode = config.value("MysqlSSLMode", -1);
 		std::string tlsVersion = config.value("MysqlTLSVersion", "");
 
-		
-
 		if (config.value("UseMySQL", true) == true)
 		{	
 			return std::make_unique<MySQLConnector>(
@@ -32,7 +30,6 @@ public:
 		}
 		else
 		{
-			Log::GetLog()->warn("Goes here");
 			std::string default_path = AsaApi::Tools::GetCurrentDir() + "/ArkApi/Plugins/" + PROJECT_NAME + "/" + ".db";
 			std::string sqlitePath = config.value("SQLiteDatabasePath","");
 			std::string db_path = (sqlitePath == "") ? default_path : sqlitePath;
