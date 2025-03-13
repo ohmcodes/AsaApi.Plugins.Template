@@ -6,8 +6,6 @@
 #include "IDatabaseConnector.h"
 #include "sqlite3/sqlite3.h"
 
-#pragma comment(lib,"sqlite3.lib")
-
 class SQLiteConnector : public IDatabaseConnector
 {
 public:

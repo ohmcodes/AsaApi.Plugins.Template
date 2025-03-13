@@ -51,6 +51,9 @@
     <ClCompile Include="Source\Database\SQLiteConnector.cpp">
       <Filter>Source Files\Database</Filter>
     </ClCompile>
+    <ClCompile Include="Includes\sqlite3\sqlite3.c">
+      <Filter>Header Files\Public\Database</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Public\PluginTemplate.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files\Public\Database</Filter>
     </ClInclude>
     <ClInclude Include="Source\Public\Database\SQLiteConnector.h">
+      <Filter>Header Files\Public\Database</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\sqlite3\sqlite3.h">
       <Filter>Header Files\Public\Database</Filter>
     </ClInclude>
   </ItemGroup>

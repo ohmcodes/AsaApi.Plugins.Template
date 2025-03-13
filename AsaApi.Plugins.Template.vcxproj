@@ -26,11 +26,13 @@
     <None Include="vcpkg.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Includes\sqlite3\sqlite3.c" />
     <ClCompile Include="Source\Database\MySQLConnector.cpp" />
     <ClCompile Include="Source\Database\SQLiteConnector.cpp" />
     <ClCompile Include="Source\PluginTemplate.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Includes\sqlite3\sqlite3.h" />
     <ClInclude Include="Source\Commands.h" />
     <ClInclude Include="Source\Hooks.h" />
     <ClInclude Include="Source\Public\Database\DatabaseFactory.h" />
@@ -178,7 +180,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
-      <AdditionalDependencies>$(SolutionDir)..\AsaApi\out_lib\AsaApi.lib;$(SolutionDir)Libs\mysqlclient.lib;$(SolutionDir)Libs\sqlite3.lib;Ws2_32.lib;crypt32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)..\AsaApi\out_lib\AsaApi.lib;$(SolutionDir)Libs\mysqlclient.lib;Ws2_32.lib;crypt32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>mkdir "$(SolutionDir)Output\$(ProjectName)\"
