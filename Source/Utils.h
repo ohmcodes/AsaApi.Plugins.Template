@@ -80,7 +80,7 @@ void LoadDatabase()
 	PluginTemplate::pluginTemplateDB = DatabaseFactory::createConnector(PluginTemplate::config["PluginDBSettings"]);
 
 	nlohmann::ordered_json tableDefinition = {};
-	if (PluginTemplate::config["PluginDBSettings"].value("UseMySQL", true))
+	if (PluginTemplate::config["PluginDBSettings"].value("UseMySQL", true) == true)
 	{
 		tableDefinition = {
 			{"Id", "INT NOT NULL AUTO_INCREMENT"},
