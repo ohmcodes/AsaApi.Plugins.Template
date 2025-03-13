@@ -13,7 +13,6 @@ Required
 - Install Visual Studio required components https://visualstudio.microsoft.com/
 - Using Github Desktop https://desktop.github.com/download/
 - Using Git-SCM https://git-scm.com/
-- Github template https://github.com/ohmcodes/AsaApi.Plugins.Template
 - How to host your game server with WindowsGSM https://www.youtube.com/watch?v=5aL7jJgkpuw
 - Getting offsets and dumper https://dumper.pelayori.com/
 - Windows console application for RCON https://github.com/Tiiffi/mcrcon
