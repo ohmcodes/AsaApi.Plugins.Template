@@ -1,6 +1,8 @@
 # AsaApi.Plugins.Template
 Simple Template to make AsaAPI plugins
 
+# PLEASE ⭐STAR⭐ THE REPO IF YOU LIKE IT! THANKS!
+
 Watch Video Tutorial
 - Part1 https://youtu.be/m80BljxIqcA
 - Part2 https://youtu.be/gsWLgR6kFsQ
