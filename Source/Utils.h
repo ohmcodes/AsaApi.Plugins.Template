@@ -93,7 +93,13 @@ void LoadDatabase()
 	}
 	else
 	{
-		// SQLite
+		tableDefinition = {
+			{"Id","INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT"},
+			{"EosId","TEXT NOT NULL UNIQUE"},
+			{"PlayerId","TEXT"},
+			{"PlayerName","TEXT"},
+			{"CreateAt","TIMESTAMP DEFAULT CURRENT_TIMESTAMP"}
+		};
 	}
 
 	PluginTemplate::pluginTemplateDB->createTableIfNotExist(PluginTemplate::config["PluginDBSettings"].value("TableName", ""), tableDefinition);
