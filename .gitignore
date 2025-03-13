@@ -5,6 +5,7 @@
 
 /Output
 /Build
+/vcpkg_installed
 
 config-dev.json
 
