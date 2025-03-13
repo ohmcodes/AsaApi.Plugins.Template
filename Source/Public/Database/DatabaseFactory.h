@@ -16,28 +16,28 @@ public:
 		int sslMode = config.value("MysqlSSLMode", -1);
 		std::string tlsVersion = config.value("MysqlTLSVersion", "");
 
-		return std::make_unique<MySQLConnector>(
-			config["Host"],
-			config["User"],
-			config["Password"],
-			config["Database"],
-			config["Port"],
-			sslMode,
-			tlsVersion
-		);
+		
 
-		if (config.value("UseMySQL", true))
+		if (config.value("UseMySQL", true) == true)
 		{	
-			
+			return std::make_unique<MySQLConnector>(
+				config["Host"],
+				config["User"],
+				config["Password"],
+				config["Database"],
+				config["Port"],
+				sslMode,
+				tlsVersion
+			);
 		}
 		else
 		{
-			/*Log::GetLog()->warn("Goes here");
+			Log::GetLog()->warn("Goes here");
 			std::string default_path = AsaApi::Tools::GetCurrentDir() + "/ArkApi/Plugins/" + PROJECT_NAME + "/" + ".db";
 			std::string sqlitePath = config.value("SQLiteDatabasePath","");
 			std::string db_path = (sqlitePath == "") ? default_path : sqlitePath;
 
-			return std::make_unique<SQLiteConnector>(db_path);*/
+			return std::make_unique<SQLiteConnector>(db_path);
 		}
 	}
 };
