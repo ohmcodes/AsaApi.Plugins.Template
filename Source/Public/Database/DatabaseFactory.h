@@ -4,7 +4,7 @@
 #pragma once
 
 #include "MySQLConnector.h"
-//#include "SQLiteConnector.h"
+#include "SQLiteConnector.h"
 #include <json.hpp>
 #include <memory>
 
