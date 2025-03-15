@@ -24,7 +24,7 @@ bool Points(FString eos_id, int cost, bool check_points = false)
 
 	nlohmann::json config = PluginTemplate::config["PointsDBSettings"];
 
-	if (!config.value("Enabled", false) == false)
+	if (config.value("Enabled", false) == false)
 	{
 		if (PluginTemplate::config["Debug"].value("Points", false) == true)
 		{
