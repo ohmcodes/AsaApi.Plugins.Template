@@ -3,9 +3,34 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 {
 	Log::GetLog()->warn("Function: {}", __FUNCTION__);
 
-	// permissions
+	// permissions check
+	FString perms = GetPriorPermByEOSID(pc->GetEOSId());
+	nlohmann::json command = GetCommandString(perms.ToString(), "RepairItemCMD");
+
+	if (command.is_null() || (!command.is_null() && command.value("Enabled", false) == false))
+	{
+		if (PluginTemplate::config["Debug"].value("Permissions", false) == true)
+		{
+			Log::GetLog()->info("{} No permissions. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
+		}
+
+		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsPermErrorMSG", "You don't have permission to use this command.").c_str());
+
+		return;
+	}
 
 	// points checking
+	if (Points(pc->GetEOSId(), command.value("Cost", 0), true) == false)
+	{
+		if (PluginTemplate::config["Debug"].value("Points", false) == true)
+		{
+			Log::GetLog()->info("{} Player don't have points. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
+		}
+
+		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsPointsErrorMSG", "Not enough points.").c_str());
+
+		return;
+	}
 
 	// execute
 	ACharacter* character = pc->CharacterField().Get();
@@ -53,13 +78,9 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 	{
 		AddPlayer(pc->GetEOSId(), pc->GetLinkedPlayerID(), pc->GetCharacterName());
 	}
-	
-	
-
-
 
 	// points deductions
-
+	Points(pc->GetEOSId(), command.value("Cost", 0));
 
 	if (affectedItemsCounter > 0)
 	{
