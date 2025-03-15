@@ -13,4 +13,8 @@ namespace PluginTemplate
 
 	inline std::unique_ptr<IDatabaseConnector> pluginTemplateDB;
 
+	inline std::unique_ptr<IDatabaseConnector> permissionsDB;
+
+	inline std::unique_ptr<IDatabaseConnector> pointsDB;
+
 }

@@ -1,6 +1,83 @@
 
 #include <fstream>
 
+TArray<FString> GetPlayerPermissions(FString eos_id)
+{
+	TArray<FString> PlayerPerms = { "Default" };
+
+	std::string escaped_eos_id = PluginTemplate::permissionsDB->escapeString(eos_id.ToString());
+
+	std::string tablename = PluginTemplate::config["PermissionsDBSettings"].value("TableName", "Players");
+
+	std::string wherefield = PluginTemplate::config["PermissionsDBSettings"].value("UniqueIDField", "EOS_Id");
+
+	std::string query = fmt::format("SELECT * FROM {} WHERE {}='{}'", tablename, wherefield, escaped_eos_id);
+
+	std::vector<std::map<std::string, std::string>> results;
+	if (!PluginTemplate::permissionsDB->read(query, results))
+	{
+		if (PluginTemplate::config["Debug"].value("Permissions", false) == true)
+		{
+			Log::GetLog()->warn("Error reading permissions DB");
+		}
+
+		return PlayerPerms;
+	}
+
+	if (results.size() <= 0) return PlayerPerms;
+
+	std::string permsfield = PluginTemplate::config["PermissionsDBSettings"].value("PermissionGroupField","PermissionGroups");
+
+	FString playerperms = FString(results[0].at(permsfield));
+
+	if (PluginTemplate::config["Debug"].value("Permissions", false) == true)
+	{
+		Log::GetLog()->info("current player perms {}", playerperms.ToString());
+	}
+
+	playerperms.ParseIntoArray(PlayerPerms, L",", true);
+
+	return PlayerPerms;
+}
+
+FString GetPriorPermByEOSID(FString eos_id)
+{
+	TArray<FString> player_groups = GetPlayerPermissions(eos_id);
+
+	const nlohmann::json permGroups = PluginTemplate::config["PermissionGroups"];
+
+	std::string defaultGroup = "Default";
+	int minPriority = INT_MAX;
+	nlohmann::json result;
+	FString selectedPerm = "Default";
+
+	for (const FString& param : player_groups)
+	{
+		if (permGroups.contains(param.ToString()))
+		{
+			int priority = static_cast<int>(permGroups[param.ToString()]["Priority"]);
+			if (priority < minPriority)
+			{
+				minPriority = priority;
+				result = permGroups[param.ToString()];
+				selectedPerm = param;
+			}
+		}
+	}
+
+	if (result.is_null() && permGroups.contains(defaultGroup))
+	{
+		result = permGroups[defaultGroup];
+	}
+
+	if (PluginTemplate::config["Debug"].value("Permissions", false) == true)
+	{
+		Log::GetLog()->info("Selecter Permission {}", selectedPerm.ToString());
+	}
+
+	return selectedPerm;
+}
+
 bool AddPlayer(FString eosID, int playerID, FString playerName)
 {
 	std::vector<std::pair<std::string, std::string>> data = {
@@ -105,5 +182,17 @@ void LoadDatabase()
 
 	PluginTemplate::pluginTemplateDB->createTableIfNotExist(PluginTemplate::config["PluginDBSettings"].value("TableName", ""), tableDefinition);
 
+
+	// PermissionsDB
+	if (PluginTemplate::config["PermissionsDBSettings"].value("Enabled", true) == true)
+	{
+		PluginTemplate::permissionsDB = DatabaseFactory::createConnector(PluginTemplate::config["PermissionsDBSettings"]);
+	}
+
+	// PointsDB (ArkShop)
+	if (PluginTemplate::config["PointsDBSettings"].value("Enabled", true) == true)
+	{
+		PluginTemplate::pointsDB = DatabaseFactory::createConnector(PluginTemplate::config["PointsDBSettings"]);
+	}
 	
 }
