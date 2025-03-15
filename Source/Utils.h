@@ -3,19 +3,49 @@
 
 bool Points(FString eos_id, int cost, bool check_points = false)
 {
-	if (cost == -1) return false;
+	if (cost == -1)
+	{
+		if (PluginTemplate::config["Debug"].value("Points", false) == true)
+		{
+			Log::GetLog()->warn("Cost is -1");
+		}
+		return false;
+	}
 
-	if (cost == 0) return true;
+	if (cost == 0)
+	{
+		if (PluginTemplate::config["Debug"].value("Points", false) == true)
+		{
+			Log::GetLog()->warn("Cost is 0");
+		}
+
+		return false;
+	}
 
 	nlohmann::json config = PluginTemplate::config["PointsDBSettings"];
 
-	if (!config.value("Enabled", false) == false) return true;
+	if (!config.value("Enabled", false) == false)
+	{
+		if (PluginTemplate::config["Debug"].value("Points", false) == true)
+		{
+			Log::GetLog()->warn("Points system is disabled");
+		}
+
+		return true;
+	}
 
 	std::string tablename = config.value("TableName", "ArkShopPlayers");
 	std::string unique_id = config.value("UniqueIDField", "EosId");
 	std::string points_field = config.value("PointsField", "Points");
 
-	if (tablename.empty() || unique_id.empty() || points_field.empty()) return true;
+	if (tablename.empty() || unique_id.empty() || points_field.empty())
+	{
+		if (PluginTemplate::config["Debug"].value("Points", false) == true)
+		{
+			Log::GetLog()->warn("DB Fields are empty");
+		}
+		return true;
+	}
 
 	std::string escaped_eos_id = PluginTemplate::pointsDB->escapeString(eos_id.ToString());
 
@@ -33,7 +63,14 @@ bool Points(FString eos_id, int cost, bool check_points = false)
 		return false;
 	}
 
-	if (results.size() <= 0) return false;
+	if (results.size() <= 0)
+	{
+		if (PluginTemplate::config["Debug"].value("Points", false) == true)
+		{
+			Log::GetLog()->warn("No record found");
+		}
+		return false;
+	}
 
 	int points = std::atoi(results[0].at(points_field).c_str());
 
@@ -164,7 +201,7 @@ FString GetPriorPermByEOSID(FString eos_id)
 
 	if (PluginTemplate::config["Debug"].value("Permissions", false) == true)
 	{
-		Log::GetLog()->info("Selecter Permission {}", selectedPerm.ToString());
+		Log::GetLog()->info("Selected Permission {}", selectedPerm.ToString());
 	}
 
 	return selectedPerm;
