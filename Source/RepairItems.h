@@ -24,7 +24,7 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 	{
 		if (PluginTemplate::config["Debug"].value("Points", false) == true)
 		{
-			Log::GetLog()->info("{} Player don't have points. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
+			Log::GetLog()->info("{} don't have points. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
 		}
 
 		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsPointsErrorMSG", "Not enough points.").c_str());

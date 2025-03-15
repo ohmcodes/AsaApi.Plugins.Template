@@ -19,7 +19,7 @@ bool Points(FString eos_id, int cost, bool check_points = false)
 			Log::GetLog()->warn("Cost is 0");
 		}
 
-		return false;
+		return true;
 	}
 
 	nlohmann::json config = PluginTemplate::config["PointsDBSettings"];
