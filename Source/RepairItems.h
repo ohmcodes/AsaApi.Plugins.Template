@@ -18,7 +18,7 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 
 		return;
 	}
-
+	 
 	// points checking
 	if (Points(pc->GetEOSId(), command.value("Cost", 0), true) == false)
 	{
