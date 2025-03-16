@@ -99,7 +99,7 @@ void DeletePlayerCallback(AShooterPlayerController* pc, FString* param, int, int
 
 	// permissions check
 	FString perms = GetPriorPermByEOSID(pc->GetEOSId());
-	nlohmann::json command = GetCommandString(perms.ToString(), "RepairItemCMD");
+	nlohmann::json command = GetCommandString(perms.ToString(), "DeletePlayerCMD");
 
 	if (command.is_null() || (!command.is_null() && command.value("Enabled", false) == false))
 	{
