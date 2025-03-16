@@ -37,6 +37,7 @@ bool Points(FString eos_id, int cost, bool check_points = false)
 	std::string tablename = config.value("TableName", "ArkShopPlayers");
 	std::string unique_id = config.value("UniqueIDField", "EosId");
 	std::string points_field = config.value("PointsField", "Points");
+	std::string totalspent_field = config.value("TotalSpentField", "TotalSpent");
 
 	if (tablename.empty() || unique_id.empty() || points_field.empty())
 	{
@@ -44,7 +45,7 @@ bool Points(FString eos_id, int cost, bool check_points = false)
 		{
 			Log::GetLog()->warn("DB Fields are empty");
 		}
-		return true;
+		return false;
 	}
 
 	std::string escaped_eos_id = PluginTemplate::pointsDB->escapeString(eos_id.ToString());
@@ -85,8 +86,6 @@ bool Points(FString eos_id, int cost, bool check_points = false)
 	}
 	else
 	{
-		std::string totalspent_field = config.value("TotalSpentFieldIndex", "TotalSpent");
-
 		int amount = points - cost;
 
 		std::vector<std::pair<std::string, std::string>> data;
@@ -107,7 +106,7 @@ bool Points(FString eos_id, int cost, bool check_points = false)
 		{
 			if (PluginTemplate::config["Debug"].value("Points", false) == true)
 			{
-				Log::GetLog()->info("Points DB updated");
+				Log::GetLog()->info("{} Points DB updated", amount);
 			}
 
 			return true;
@@ -138,9 +137,9 @@ TArray<FString> GetPlayerPermissions(FString eos_id)
 
 	std::string tablename = PluginTemplate::config["PermissionsDBSettings"].value("TableName", "Players");
 
-	std::string wherefield = PluginTemplate::config["PermissionsDBSettings"].value("UniqueIDField", "EOS_Id");
+	std::string condition = PluginTemplate::config["PermissionsDBSettings"].value("UniqueIDField", "EOS_Id");
 
-	std::string query = fmt::format("SELECT * FROM {} WHERE {}='{}'", tablename, wherefield, escaped_eos_id);
+	std::string query = fmt::format("SELECT * FROM {} WHERE {}='{}';", tablename, condition, escaped_eos_id);
 
 	std::vector<std::map<std::string, std::string>> results;
 	if (!PluginTemplate::permissionsDB->read(query, results))
@@ -196,7 +195,10 @@ FString GetPriorPermByEOSID(FString eos_id)
 
 	if (result.is_null() && permGroups.contains(defaultGroup))
 	{
-		result = permGroups[defaultGroup];
+		if(!permGroups[defaultGroup].is_null())
+			result = permGroups[defaultGroup];
+
+		result = {};
 	}
 
 	if (PluginTemplate::config["Debug"].value("Permissions", false) == true)
