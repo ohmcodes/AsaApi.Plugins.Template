@@ -41,6 +41,8 @@ void FetchMessageFromDiscordCallback(bool success, std::string results)
 
 void FetchMessageFromDiscord()
 {
+	Log::GetLog()->warn("Function: {}", __FUNCTION__);
+
 	std::string botToken = PluginTemplate::config["DiscordBot"].value("BotToken","");
 
 	std::string channelID = PluginTemplate::config["DiscordBot"].value("ChannelID", "");
