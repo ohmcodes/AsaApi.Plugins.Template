@@ -7,10 +7,18 @@ void SendMessageToDiscordCallback(bool success, std::string results, std::unorde
 	{
 		Log::GetLog()->error("Failed to send Post request. {} {} {}", __FUNCTION__, success, results);
 	}
+	else
+	{
+		Log::GetLog()->info("Success. {} {} {}", __FUNCTION__, success, results);
+	}
 }
 
 void SendMessageToDiscord(std::string msg)
 {
+
+	Log::GetLog()->warn("Function: {}", __FUNCTION__);
+
+
 	std::string webhook = PluginTemplate::config["DiscordBot"].value("Webhook", "");
 	std::string botImgUrl = PluginTemplate::config["DiscordBot"].value("BotImageURL", "");
 
@@ -22,7 +30,7 @@ void SendMessageToDiscord(std::string msg)
 
 	std::vector<std::string> headers = {
 		"Content-Type: application/json",
-		"User-Agent: DiscordLinker/1.0",
+		"User-Agent: PluginTemplate/1.0",
 		"Connection: keep-alive",
 		"Accept: */*"
 	};
