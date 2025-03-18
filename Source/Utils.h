@@ -9,6 +9,8 @@ static bool startsWith(const std::string& str, const std::string& prefix)
 
 void FetchMessageFromDiscordCallback(bool success, std::string results)
 {
+	Log::GetLog()->warn("Function: {}", __FUNCTION__);
+
 	if (success)
 	{
 		if(results.empty()) return;
@@ -36,6 +38,10 @@ void FetchMessageFromDiscordCallback(bool success, std::string results)
 		{
 			Log::GetLog()->error("Error parsing JSON results. Error: {}",error.what());
 		}
+	}
+	else
+	{
+		Log::GetLog()->warn("Failed to fetch messages. success: {}", success);
 	}
 }
 
