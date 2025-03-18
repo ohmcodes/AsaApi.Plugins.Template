@@ -18,7 +18,7 @@ void SendMessageToDiscord(std::string msg)
 
 	Log::GetLog()->warn("Function: {}", __FUNCTION__);
 
-
+	
 	std::string webhook = PluginTemplate::config["DiscordBot"].value("Webhook", "");
 	std::string botImgUrl = PluginTemplate::config["DiscordBot"].value("BotImageURL", "");
 
