@@ -85,6 +85,10 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 	if (affectedItemsCounter > 0)
 	{
 		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Green, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsMSG", "All items has been repaired.").c_str(), pc->GetCharacterName().ToString());
+
+		std::string msg = fmt::format("Player {} repaired their items. count {}", pc->GetCharacterName().ToString(), affectedItemsCounter);
+
+		SendMessageToDiscord(msg);
 	}
 }
 

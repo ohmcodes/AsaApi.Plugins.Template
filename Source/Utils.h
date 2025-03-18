@@ -1,6 +1,45 @@
 
 #include <fstream>
 
+void SendMessageToDiscordCallback(bool success, std::string results, std::unordered_map<std::string, std::string> responseHeaders)
+{
+	if (!success)
+	{
+		Log::GetLog()->error("Failed to send Post request. {} {} {}", __FUNCTION__, success, results);
+	}
+}
+
+void SendMessageToDiscord(std::string msg)
+{
+	std::string webhook = PluginTemplate::config["DiscordBot"].value("Webhook", "");
+	std::string botImgUrl = PluginTemplate::config["DiscordBot"].value("BotImageURL", "");
+
+	if (webhook == "" || webhook.empty()) return;
+
+	FString msgFormat = L"{{\"content\":\"{}\",\"username\":\"{}\",\"avatar_url\":\"{}\"}}";
+
+	FString msgOutput = FString::Format(*msgFormat, msg, "ArkBot", botImgUrl);
+
+	std::vector<std::string> headers = {
+		"Content-Type: application/json",
+		"User-Agent: DiscordLinker/1.0",
+		"Connection: keep-alive",
+		"Accept: */*"
+	};
+
+	try
+	{
+		bool req = PluginTemplate::req.CreatePostRequest(webhook, SendMessageToDiscordCallback, msgOutput.ToStringUTF8(), "application/json", headers);
+
+		if(!req)
+			Log::GetLog()->error("Failed to send Post request. req = {}", req);
+	}
+	catch (const std::exception& error)
+	{
+		Log::GetLog()->error("Failed to send Post request. Error: {}", error.what());
+	}
+}
+
 bool Points(FString eos_id, int cost, bool check_points = false)
 {
 	if (cost == -1)

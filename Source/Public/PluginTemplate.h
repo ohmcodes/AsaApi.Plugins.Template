@@ -4,6 +4,8 @@
 
 #include "Database/DatabaseFactory.h"
 
+#include "Requests.h"
+
 namespace PluginTemplate
 {
 	inline nlohmann::json config;
@@ -16,5 +18,9 @@ namespace PluginTemplate
 	inline std::unique_ptr<IDatabaseConnector> permissionsDB;
 
 	inline std::unique_ptr<IDatabaseConnector> pointsDB;
+
+	static API::Requests& req = API::Requests::Get();
+
+
 
 }
