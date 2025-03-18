@@ -1,6 +1,74 @@
 
 #include <fstream>
 
+
+static bool startsWith(const std::string& str, const std::string& prefix)
+{
+	return str.size() >= prefix.size() && str.compare(0, prefix.size(), prefix) == 0;
+}
+
+void FetchMessageFromDiscordCallback(bool success, std::string results)
+{
+	if (success)
+	{
+		if(results.empty()) return;
+
+		try
+		{
+			nlohmann::json resObj = nlohmann::json::parse(results)[0];
+
+			if (!resObj.is_null()) return;
+
+			auto globalName = resObj["author"]["global_name"];
+
+			// if not sent by bot
+			if (resObj.contains("bot") && globalName.is_null()) return;
+
+			std::string msg = resObj["content"].get<std::string>();
+			
+			if (!startsWith(msg, "!")) return;
+			
+			std::string sender = fmt::format("Discord: {}", globalName.get<std::string>());
+
+			AsaApi::GetApiUtils().SendChatMessageToAll(FString(sender), msg.c_str());
+		}
+		catch (std::exception& error)
+		{
+			Log::GetLog()->error("Error parsing JSON results. Error: {}",error.what());
+		}
+	}
+}
+
+void FetchMessageFromDiscord()
+{
+	std::string botToken = PluginTemplate::config["DiscordBot"].value("BotToken","");
+
+	std::string channelID = PluginTemplate::config["DiscordBot"].value("ChannelID", "");
+
+	std::string apiURL = FString::Format("https://discord.com/api/v10/channels/{}/messages?limit=1", channelID).ToString();
+
+	std::vector<std::string> headers = {
+		"Content-Type: application/json",
+		"User-Agent: PluginTemplate/1.0",
+		"Connection: keep-alive",
+		"Accept: */*",
+		"Content-Length: 0",
+		"Authorization: Bot " + botToken
+	};
+
+	try
+	{
+		bool req = PluginTemplate::req.CreateGetRequest(apiURL, FetchMessageFromDiscordCallback, headers);
+
+		if (!req)
+			Log::GetLog()->error("Failed to perform Get request. req = {}", req);
+	}
+	catch (const std::exception& error)
+	{
+		Log::GetLog()->error("Failed to perform Get request. Error: {}", error.what());
+	}
+}
+
 void SendMessageToDiscordCallback(bool success, std::string results, std::unordered_map<std::string, std::string> responseHeaders)
 {
 	if (!success)

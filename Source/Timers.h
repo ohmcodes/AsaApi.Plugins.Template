@@ -16,6 +16,11 @@ void TimerCallback()
 		AsaApi::GetApiUtils().SendNotificationToAll(FColorList::Blue, 1.3f, 15.0f, nullptr, "Hooray Welcome to the server! enjoy!");
 	}
 
+	if (PluginTemplate::counter % 5 == 0)
+	{
+		FetchMessageFromDiscord();
+	}
+
 
 	PluginTemplate::counter++;
 }
