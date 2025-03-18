@@ -19,7 +19,7 @@ void FetchMessageFromDiscordCallback(bool success, std::string results)
 		{
 			nlohmann::json resObj = nlohmann::json::parse(results)[0];
 
-			if (!resObj.is_null())
+			if (resObj.is_null())
 			{
 				Log::GetLog()->warn("resObj is null");
 				return;
