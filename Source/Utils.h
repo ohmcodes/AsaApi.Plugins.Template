@@ -19,16 +19,28 @@ void FetchMessageFromDiscordCallback(bool success, std::string results)
 		{
 			nlohmann::json resObj = nlohmann::json::parse(results)[0];
 
-			if (!resObj.is_null()) return;
+			if (!resObj.is_null())
+			{
+				Log::GetLog()->warn("resObj is null");
+				return;
+			}
 
 			auto globalName = resObj["author"]["global_name"];
 
 			// if not sent by bot
-			if (resObj.contains("bot") && globalName.is_null()) return;
+			if (resObj.contains("bot") && globalName.is_null())
+			{
+				Log::GetLog()->warn("the sender is bot");
+				return;
+			}
 
 			std::string msg = resObj["content"].get<std::string>();
 			
-			if (!startsWith(msg, "!")) return;
+			if (!startsWith(msg, "!"))
+			{
+				Log::GetLog()->warn("message not startswith !");
+				return;
+			}
 			
 			std::string sender = fmt::format("Discord: {}", globalName.get<std::string>());
 
