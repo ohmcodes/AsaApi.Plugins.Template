@@ -9,7 +9,7 @@ static bool startsWith(const std::string& str, const std::string& prefix)
 
 void FetchMessageFromDiscordCallback(bool success, std::string results)
 {
-	Log::GetLog()->warn("Function: {}", __FUNCTION__);
+	//Log::GetLog()->warn("Function: {}", __FUNCTION__);
 
 	if (success)
 	{
@@ -63,7 +63,7 @@ void FetchMessageFromDiscordCallback(bool success, std::string results)
 
 void FetchMessageFromDiscord()
 {
-	Log::GetLog()->warn("Function: {}", __FUNCTION__);
+	//Log::GetLog()->warn("Function: {}", __FUNCTION__);
 
 	std::string botToken = PluginTemplate::config["DiscordBot"].value("BotToken","");
 
