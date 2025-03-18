@@ -41,10 +41,14 @@ void FetchMessageFromDiscordCallback(bool success, std::string results)
 				Log::GetLog()->warn("message not startswith !");
 				return;
 			}
+
+			if (PluginTemplate::lastMessageID == resObj["id"].get<std::string>()) return;
 			
 			std::string sender = fmt::format("Discord: {}", globalName.get<std::string>());
 
 			AsaApi::GetApiUtils().SendChatMessageToAll(FString(sender), msg.c_str());
+
+			PluginTemplate::lastMessageID = resObj["id"].get<std::string>();
 		}
 		catch (std::exception& error)
 		{

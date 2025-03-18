@@ -21,6 +21,6 @@ namespace PluginTemplate
 
 	static API::Requests& req = API::Requests::Get();
 
-
+	inline std::string lastMessageID;
 
 }
