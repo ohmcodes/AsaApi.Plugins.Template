@@ -3,9 +3,26 @@
     "Debug": true,
     "IgnoreInvRepairRequirements": true
   },
+  "Debug": {
+    "PluginTemplate": true,
+    "Permissions": true,
+    "Points": true
+  },
   "Commands": {
     "RepairItemCMD": "/repairitems",
     "DeletePlayerCMD": "/deleteplayer"
+  },
+  "Messages": {
+    "RepairItemsMSG": "All items has been repaired. {}",
+    "RepairItemsPermErrorMSG": "You don't have permission to use this command.",
+    "PointsErrorMSG": "Not enough points."
+  },
+  "DiscordBot": {
+    "GuildID": "",
+    "ChannelID": "",
+    "BotToken": "",
+    "Webhook": "",
+    "BotImageURL": ""
   },
   "PluginDBSettings": {
     "UseMySQL": false,
@@ -18,5 +35,50 @@
     "MysqlSSLMode": -1,
     "MysqlTLSVersion": "",
     "SQLiteDatabasePath": ""
+  },
+  "PermissionsDBSettings": {
+    "Enabled": false,
+    "UseMySQL": false,
+    "Host": "",
+    "User": "",
+    "Password": "",
+    "Database": "",
+    "TableName": "Players",
+    "UniqueIDField": "EOS_Id",
+    "PermissionGroupField": "PermissionGroups",
+    "Port": 3306,
+    "MysqlSSLMode": -1,
+    "MysqlTLSVersion": "",
+    "SQLiteDatabasePath": ""
+  },
+  "PointsDBSettings": {
+    "Enabled": false,
+    "UseMySQL": false,
+    "Host": "",
+    "User": "",
+    "Password": "",
+    "Database": "",
+    "TableName": "ArkShopPlayers",
+    "UniqueIDField": "EosId",
+    "PointsField": "Points",
+    "TotalSpentField": "TotalSpent",
+    "Port": 3306,
+    "MysqlSSLMode": -1,
+    "MysqlTLSVersion": "",
+    "SQLiteDatabasePath": ""
+  },
+  "PermissionGroups": {
+    "Default": {
+      "Priority": 99
+    },
+    "Admins": {
+      "Priority": 1,
+      "Commands": {
+        "RepairItemCMD": {
+          "Enabled": false,
+          "Cost": 0
+        }
+      }
+    }
   }
 }
