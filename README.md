@@ -33,4 +33,4 @@ Guide
 - Find and replace all filters
 - Change namespace
 - Create config-dev.json
-- Change vcxproj line42
+- Change vcxproj line 40,42
