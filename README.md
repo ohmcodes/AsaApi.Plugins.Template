@@ -24,3 +24,13 @@ Required
 - SQLite Docs - https://sqlite.org/docs.html
 
 You can download other plugins here https://ark-server-api.com/resources/
+
+
+Guide
+- Rename vcpkg.json "name"
+- Rename sln file and line 6
+- Rename vcxproj
+- Find and replace all filters
+- Change namespace
+- Create config-dev.json
+- Change vcxproj line42
