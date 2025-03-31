@@ -45,14 +45,16 @@ void ReloadConfigRcon(RCONClientConnection* rcon_connection, RCONPacket* rcon_pa
  
 void AddReloadCommands(bool addCmd = true)
 {
+	FString reloadCmd = std::string(PROJECT_NAME + std::string(".Reload")).c_str();
+
 	if (addCmd)
 	{
-		AsaApi::GetCommands().AddConsoleCommand("PluginTemplate.Reload", &ReloadConfig);
-		AsaApi::GetCommands().AddRconCommand("PluginTemplate.Reload", &ReloadConfigRcon);
+		AsaApi::GetCommands().AddConsoleCommand(reloadCmd, &ReloadConfig);
+		AsaApi::GetCommands().AddRconCommand(reloadCmd, &ReloadConfigRcon);
 	}
 	else
 	{
-		AsaApi::GetCommands().RemoveConsoleCommand("PluginTemplate.Reload");
-		AsaApi::GetCommands().RemoveRconCommand("PluginTemplate.Reload");
+		AsaApi::GetCommands().RemoveConsoleCommand(reloadCmd);
+		AsaApi::GetCommands().RemoveRconCommand(reloadCmd);
 	}
 }
