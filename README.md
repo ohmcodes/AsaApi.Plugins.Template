@@ -9,6 +9,9 @@ Watch Video Tutorial
 - Part3 https://youtu.be/3UwMR8t4pHQ
 - Part4 https://youtu.be/o1odrRlZsNo
 - Part5 https://youtu.be/QhI3F0Bpl_0
+- Part6 https://youtu.be/4kzAjWrjO6g (Broken Audio)
+- Part6 https://youtu.be/2iqkIE4nwUs (Fixed)
+- Part7 https://youtu.be/Y37ZDl7kN_A
 
 Required
 - Clone, compile, and link library https://ark-server-api.com/resources/asa-server-api.31/
