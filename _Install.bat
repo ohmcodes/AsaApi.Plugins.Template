@@ -19,7 +19,7 @@ if exist ".git" (
     git pull
 ) else (
     echo Cloning from Git...
-    git clone "https://github.com/ohmcodes/StringManipulation.git" .
+    git clone "https://github.com/ohmcodes/Tools.StringManipulation.git" .
 )
 
 :: Run the Node.js script with parameters

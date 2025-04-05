@@ -51,4 +51,6 @@ TODO: `replace <PROJECT_NAME> with your Project name`
 - Source/<PROJECT_NAME>.cpp
 - Source/Public/<PROJECT_NAME>.h
 
-Note: if you dont wanna do all of this just run `Install.bat`
+Notes: 
+- if you dont wanna do all of this just run `Install.bat`
+- if this repo is existing in your machine and you just created a different repo without using this template you can just run `_Copy.bat` and specified your directory path
