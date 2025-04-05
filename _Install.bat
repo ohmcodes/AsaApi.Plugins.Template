@@ -22,6 +22,12 @@ if exist ".git" (
     git clone "https://github.com/ohmcodes/Tools.StringManipulation.git" .
 )
 
+:: Create config-dev.json if it does not exist
+if not exist "%~dp0Configs\config-dev.json" (
+    echo {} > "%~dp0Configs\config-dev.json"
+    echo Created config-dev.json in Configs directory.
+)
+
 :: Run the Node.js script with parameters
 echo Running Node.js script...
 call npm install
