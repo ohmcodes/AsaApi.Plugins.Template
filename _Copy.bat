@@ -18,7 +18,6 @@ xcopy "%SOURCE_DIR%\Source" "%DEST_DIR%\Source" /s /i /e
 
 :: Copy files
 copy "%SOURCE_DIR%\gitignore" "%DEST_DIR%\gitignore"
-copy "%SOURCE_DIR%\_Install.bat" "%DEST_DIR%\_Install.bat"
 copy "%SOURCE_DIR%\AsaApi.Plugins.Template.vcxproj" "%DEST_DIR%\AsaApi.Plugins.Template.vcxproj"
 copy "%SOURCE_DIR%\AsaApi.Plugins.Template.vcxproj.filters" "%DEST_DIR%\AsaApi.Plugins.Template.vcxproj.filters"
 copy "%SOURCE_DIR%\AsaApi.Plugins.Template.vcxproj.user" "%DEST_DIR%\AsaApi.Plugins.Template.vcxproj.user"
