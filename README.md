@@ -28,17 +28,6 @@ Required
 
 You can download other plugins here https://ark-server-api.com/resources/
 
-
-Guide
-- Rename vcpkg.json "name"
-- Rename sln file and line 6
-- Rename vcxproj
-- Find and replace all filters
-- Change namespace
-- Create config-dev.json
-- Change vcxproj line 40,42
-
-
 TODO: `replace <PROJECT_NAME> with your Project name`
 - vcpkg.json line 2 replace "name": "asa-api-plugin-template" to "asa-api-plugin-<PROJECT_NAME>"
 - PluginTemplate.sln line 6 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "<PROJECT_NAME>", "AsaApi.Plugins.<PROJECT_NAME>.vcxproj", "{F7095F8F-7BBD-40A5-B61D-B442C92A88B2}"
