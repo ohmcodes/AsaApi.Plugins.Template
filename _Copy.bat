@@ -28,15 +28,14 @@ copy "%SOURCE_DIR%\vcpkg-configuration.json" "%DEST_DIR%\vcpkg-configuration.jso
 
 echo Files and directories copied successfully.
 
-cd %DEST_DIR%
 
 :: Create the Prepare directory
 echo Creating the Prepare directory...
-mkdir "%~dp0Prepare"
+mkdir "%DEST_DIR%\Prepare"
 
 :: Change to the Prepare directory
 echo Changing to the Prepare directory...
-cd /d "%~dp0Prepare"
+cd /d "%DEST_DIR%\Prepare"
 
 :: Check if the repository already exists
 if exist ".git" (
@@ -48,8 +47,8 @@ if exist ".git" (
 )
 
 :: Create config-dev.json if it does not exist
-if not exist "%~dp0Configs\config-dev.json" (
-    echo {} > "%~dp0Configs\config-dev.json"
+if not exist "%DEST_DIR%\Configs\config-dev.json" (
+    echo {} > "%DEST_DIR%\Configs\config-dev.json"
     echo Created config-dev.json in Configs directory.
 )
 
@@ -63,21 +62,11 @@ for /f "tokens=*" %%a in ('node index.js "%PROJECT_NAME%" "%PROJECT_DESC%"') do 
 
 :: Delete the Prepare directory
 echo Deleting the Prepare directory...
-cd /d "%~dp0"
-rmdir /s /q "%~dp0Prepare"
+cd /d "%DEST_DIR%"
+rmdir /s /q "%DEST_DIR%\Prepare"
 
 
 echo All tasks completed.
-pause
-
-
-:: Delete this batch file
-echo Deleting this batch file...
-del "%~f0"
-
-
-
-
 pause
 
 endlocal
