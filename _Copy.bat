@@ -28,6 +28,8 @@ copy "%SOURCE_DIR%\vcpkg-configuration.json" "%DEST_DIR%\vcpkg-configuration.jso
 
 echo Files and directories copied successfully.
 
+cd %DEST_DIR%
+
 :: Create the Prepare directory
 echo Creating the Prepare directory...
 mkdir "%~dp0Prepare"
