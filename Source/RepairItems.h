@@ -14,7 +14,7 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 			Log::GetLog()->info("{} No permissions. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
 		}
 
-		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsPermErrorMSG", "You don't have permission to use this command.").c_str());
+		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("PermErrorMSG", "You don't have permission to use this command.").c_str());
 
 		return;
 	}
@@ -112,7 +112,7 @@ void DeletePlayerCallback(AShooterPlayerController* pc, FString* param, int, int
 			Log::GetLog()->info("{} No permissions. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
 		}
 
-		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsPermErrorMSG", "You don't have permission to use this command.").c_str());
+		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("PermErrorMSG", "You don't have permission to use this command.").c_str());
 
 		return;
 	}

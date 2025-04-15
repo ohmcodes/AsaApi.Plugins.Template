@@ -14,7 +14,7 @@
   },
   "Messages": {
     "RepairItemsMSG": "All items has been repaired. {}",
-    "RepairItemsPermErrorMSG": "You don't have permission to use this command.",
+    "PermErrorMSG": "You don't have permission to use this command.",
     "PointsErrorMSG": "Not enough points."
   },
   "DiscordBot": {
